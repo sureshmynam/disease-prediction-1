@@ -134,13 +134,13 @@ export const Header: React.FC<HeaderProps> = ({
 
           <div className="h-6 w-px bg-slate-200 hidden sm:block" />
 
-          <button
-            onClick={() => alert('Authenticated Clinician Session: Dr. Sarah Vance, MD (PBKDF2-SHA256 Token Active)')}
-            className="text-slate-500 hover:text-slate-800 p-1.5 rounded-md hover:bg-slate-100 hidden sm:block"
-            title="Clinician Account Details"
+          <div
+            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-mono"
+            title="Authenticated Clinician Session: Dr. Sarah Vance, MD (PBKDF2-SHA256 Token Active)"
           >
-            <UserCheck className="w-4 h-4 text-emerald-600" />
-          </button>
+            <UserCheck className="w-3.5 h-3.5 text-emerald-600" />
+            <span className="text-[11px] font-sans font-medium text-slate-600">Dr. Vance, MD</span>
+          </div>
         </div>
       </header>
     </>

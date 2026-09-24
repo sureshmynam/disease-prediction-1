@@ -7,7 +7,9 @@ import {
   Binary,
   GitFork,
   Sparkles,
-  ShieldCheck
+  ShieldCheck,
+  Zap,
+  ArrowRight
 } from 'lucide-react';
 
 interface AnalysisLoadingModalProps {
@@ -101,9 +103,21 @@ export const AnalysisLoadingModal: React.FC<AnalysisLoadingModalProps> = ({
               <p className="text-xs text-slate-400">Processing: {patientName || 'Anonymous Patient'}</p>
             </div>
           </div>
-          <div className="text-right">
-            <span className="font-mono text-xs text-cyan-400 font-bold">{progressPercent}%</span>
-            <div className="text-[10px] text-slate-400 font-mono">pgmpy v0.1.25</div>
+          <div className="flex items-center gap-3">
+            <div className="text-right">
+              <span className="font-mono text-xs text-cyan-400 font-bold">{progressPercent}%</span>
+              <div className="text-[10px] text-slate-400 font-mono">pgmpy v0.1.25</div>
+            </div>
+            <button
+              type="button"
+              onClick={onComplete}
+              className="px-2.5 py-1 bg-cyan-400 hover:bg-cyan-300 active:scale-95 text-slate-900 rounded-lg text-xs font-bold flex items-center gap-1 transition shadow-xs"
+              title="Skip animation and display the direct prediction immediately"
+            >
+              <Zap className="w-3.5 h-3.5 fill-slate-900 text-slate-900" />
+              <span>Direct Prediction</span>
+              <ArrowRight className="w-3 h-3" />
+            </button>
           </div>
         </div>
 
@@ -177,8 +191,18 @@ export const AnalysisLoadingModal: React.FC<AnalysisLoadingModalProps> = ({
 
         {/* Footer info notice */}
         <div className="px-6 py-3 bg-white border-t border-slate-200 flex items-center justify-between text-[11px] text-slate-500 font-mono">
-          <span>Significance threshold: α = 0.05</span>
-          <span className="text-emerald-600 font-medium">Dirichlet CPD Prior active</span>
+          <div className="flex items-center gap-2">
+            <span>Significance threshold: α = 0.05</span>
+            <span>&bull;</span>
+            <span className="text-emerald-600 font-medium">Dirichlet Prior active</span>
+          </div>
+          <button
+            type="button"
+            onClick={onComplete}
+            className="text-xs font-sans text-sky-600 hover:text-sky-800 font-semibold underline underline-offset-2 flex items-center gap-1 cursor-pointer"
+          >
+            Show direct prediction now &rarr;
+          </button>
         </div>
       </div>
     </div>

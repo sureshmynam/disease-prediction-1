@@ -63,14 +63,21 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // 2. Triggered when user clicks "Analyze Patient" in the form
-  const handleAnalyzePatient = async (patient: PatientInput) => {
+  // 2. Triggered when user requests prediction (defaults to direct prediction without modal wait)
+  const handleAnalyzePatient = async (patient: PatientInput, showModal: boolean = false) => {
     setPendingPatient(patient);
-    setIsAnalyzing(true);
 
-    // Run prediction computation through ApiService
+    // Compute prediction through ApiService
     const resultRecord = await ApiService.predict(patient);
     setActivePrediction(resultRecord);
+
+    if (showModal) {
+      setIsAnalyzing(true);
+    } else {
+      setIsAnalyzing(false);
+      setCurrentTab('result');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   // 3. Called when the 6-step analysis modal completes animation
