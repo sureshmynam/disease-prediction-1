@@ -1,0 +1,7 @@
+{
+  "name": "Patient Disease Prediction — Bayesian Network & p-Value Suite",
+  "description": "Biostatistical clinical prediction system combining hypothesis testing (p < 0.05) and Directed Acyclic Graph (DAG) Bayesian Network inference for cardiovascular disease.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
